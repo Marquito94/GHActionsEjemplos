@@ -1,0 +1,10 @@
+name: Activar Cronjob
+on:
+  schedule:
+    - cron: '*/1 * * * *' # genera el workflow cada minuto
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Saludar
+        run: echo "Hola, este run se hace cada minuto"

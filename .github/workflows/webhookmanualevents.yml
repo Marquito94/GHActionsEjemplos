@@ -1,0 +1,25 @@
+name: Github Events
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  echo-job:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v2
+      
+      - name: Echo Message on Push
+        if: github.event_name == 'push'
+        run: echo "Push realizado"
+      
+      - name: Echo Message on Pull Request
+        if: github.event_name == 'pull_request'
+        run: echo "Pull request realizado"
+            

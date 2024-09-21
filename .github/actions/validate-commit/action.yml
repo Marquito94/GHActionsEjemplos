@@ -1,0 +1,10 @@
+name: 'Validate commit message'
+description: "Revisa si el mensaje del commit sigue un formato especifico"
+inputs:
+  commit_message:
+    description: "Mensaje del commit a validar"
+    required: true
+  
+runs:
+  using: "node16"
+  main: 'index.js'

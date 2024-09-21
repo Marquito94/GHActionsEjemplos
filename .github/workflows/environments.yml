@@ -1,0 +1,17 @@
+name: Usar environment y variables
+on:
+  workflow_dispatch:
+jobs:
+  usar-var:
+    runs-on: ubuntu-latest
+    environment: env_ejemplo
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+      - name: Usar variable de entorno
+        run: echo "El valor de la variable es ${{ vars.ENV_VAR }}"
+      - name: Usar variable secreta
+        run: echo "El valor de la variable secreta es ${{ secrets.ENV_SEC }}"
+
+        
+            

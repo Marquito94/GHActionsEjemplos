@@ -1,0 +1,21 @@
+name: Upload Artifact
+on:
+  workflow_dispatch:
+
+jobs:
+  use-artifact:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v2
+        
+      - name: Create File and Write Something
+        run: |
+          touch output.txt
+          echo "hola como estan" >> output.txt
+          
+      - name: Upload Artifact
+        uses: actions/upload-artifact@v3
+        with:
+          name: hello-world-artifact
+          path: output.txt

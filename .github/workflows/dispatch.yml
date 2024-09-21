@@ -1,0 +1,15 @@
+name: Dispatch workflow
+
+on: 
+    workflow_dispatch:
+        inputs:
+            message:
+                description: 'Mensaje a usar en el commit '
+                required: true
+                default: ''
+
+jobs:
+    call-workflow:
+        uses: ./.github/workflows/commit-and-pr.yml
+        with:
+            message: ${{ github.event.inputs.message }}

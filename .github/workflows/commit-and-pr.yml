@@ -1,0 +1,28 @@
+name: Auto Commit
+on:
+  workflow_call:
+    inputs:
+      message:
+        description: 'Input for the commit message'
+        required: true
+        type: string
+jobs:
+  commit:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+    steps:
+      - name: Checkout Repository
+        uses: actions/checkout@v3
+
+      - name: Make Changes
+        run: |
+          echo "Changes: ${{ inputs.message }}" >> changes.txt
+          git config --local user.email "rmatos@cleveritgroup.com"
+          git config --local user.name "rmatos"
+          git add changes.txt
+          git commit -m "Automatic commit ${{ inputs.message }}"
+
+      - name: Push to Main Branch
+        run: |
+          git push origin main
